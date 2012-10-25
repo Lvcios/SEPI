@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load adminmedia %} 
+{%block dia%}
+	<h1>{{Fecha_D}} de {{Fecha_M}} de {{Fecha_A}}</h1>
+	{% for evento in eventos %}
+    <div class="hero-unit">
+        <div class="container-fluid">
+            <p><h3>{{ evento.Nombre }}</h3></p>
+            Sitio Web:<p>{{ evento.Pagina }}</p>
+			Tipo:<p>{{ evento.Tipo }}</p>
+			Precio:<p>{{ evento.Costo }}</p>
+			Trata acerca de:<p>{{ evento.Descripcion }}</p>
+			Empieza a las:<p>{{ evento.Hora_I }}</p>
+			Termina el <p>{{evento.Fecha_F}} a las {{ evento.Hora_I }}</p>
+			Pais<p>{{ evento.Pais.name }}</p>
+			Estado/Provincia <p>{{ evento.Estado}}</p>
+			Municipio <p>{{ evento.Municipio}}</p>
+			Direccion <p>{{ evento.Direccion}}</p>
+			Referencias {% if evento.Referencias%} <p>{{ evento.Referencias}}</p> {%endif%}
+						{% if not evento.Referencias%} <p>No se especificaron referencias</p>{%endif%}
+        </div>
+    </div>
+	{% endfor %}
+{%endblock%}

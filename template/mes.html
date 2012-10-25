@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load adminmedia %} 
+	
+	{% block mes%}
+		<div align="center">
+			<h1>{{ mname }} {{ year }}</h1>
+        </div>
+		<div class="hero-unit">
+		<a href= "{% url congreso.views.vista_mes year_prev month_prev  %}">{{mname_prev}} {{year_prev}} </a><br />
+		<a href= "{% url congreso.views.vista_mes year_next month_next   %}">{{mname_next}} {{year_next}}</a>
+			<table class="table table-striped">
+				<tr>
+					<td class="span3">Lunes</td>
+					<td class="span3">Martes</td>
+					<td class="span3">Miercoles</td>
+					<td class="span3">Jueves</td>
+					<td class="span3">Viernes</td>
+					<td class="span3">S&aacute;bado</td>
+					<td class="span3">Domingo</td>
+				</tr>
+					{% for week in month_days %}
+				<tr>
+				{% for day, eventos, current in week %}
+				<td>
+				{% if day != 0 %}
+						{{ day }}
+						{% for evento in eventos %}
+						<p></p><a href= "{% url congreso.views.vista_dia year month day %}">{{ evento.Nombre }}</a>
+					{% endfor %}
+				{% endif %}
+				</td>
+				{% endfor %}
+				</tr>
+				{% endfor %}
+    </table>
+{% endblock%}

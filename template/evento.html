@@ -1,0 +1,93 @@
+{% extends 'index.html' %}
+{% load adminmedia %} 
+{% block registro%}
+		<form id="formulario" method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+			<table>
+				<tr>
+					<td>{{formulario.Nombre.errors}}</td>
+					<td><label>Nombre del evento:</label></td>
+					<td>{{formulario.Nombre}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Pagina.errors}}</td>
+					<td><label>P&aacute;gina Web:</label></td>
+					<td>{{formulario.Pagina}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Tipo.errors}}</td>
+					<td><label>Tipo</label></td>
+					<td>{{formulario.Tipo}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Costo.errors}}</td>
+					<td><label>Costo:</label></td>
+					<td>{{formulario.Costo}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Descripcion.errors}}</td>
+					<td><label>Descripci&oacute;n:</label></td>
+					<td>{{formulario.Descripcion}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Fecha_I.errors}}</td>
+					<td><label>Fecha de inicio:</label></td>
+					<td>{{formulario.Fecha_I}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Hora_I.errors}}</td>
+					<td><label>Hora de Inicio:</label></td>
+					<td>{{formulario.Hora_I}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Fecha_F.errors}}</td>
+					<td><label>Fecha de clausura:</label></td>
+					<td>{{formulario.Fecha_F}}</td>
+				</tr>
+				<!--
+				fields = ('Nombre','Pagina','Tipo','Costo','Descripcion','Fecha_I','Hora_I','Fecha_F','Hora_F','Estado','Municipio','Direccion','Referencias','Director','Correo')
+				!-->
+				<tr>
+					<td>{{formulario.Hora_F.errors}}</td>
+					<td><label>Hora de Clausura:</label></td>
+					<td>{{formulario.Hora_F}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Pais.errors}}</td>
+					<td><label>Pais:</label></td>
+					<td>{{formulario.Pais}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Estado.errors}}</td>
+					<td><label>Estado o Provicia:</label></td>
+					<td>{{formulario.Estado}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Municipio.errors}}</td>
+					<td><label>Municipio o Delegaci&oacute;n:</label></td>
+					<td>{{formulario.Municipio}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Direccion.errors}}</td>
+					<td><label>Direcci&oacute;n:</label></td>
+					<td>{{formulario.Direccion}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Referencias.errors}}</td>
+					<td><label>Referencias:</label></td>
+					<td>{{formulario.Referencias}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Director.errors}}</td>
+					<td><label>Director del evento:</label></td>
+					<td>{{formulario.Director}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Correo.errors}}</td>
+					<td><label>E-mail de contacto:</label></td>
+					<td>{{formulario.Correo}}</td>
+				</tr>
+			</table>
+			<p><input type="submit" value="Confirmar"></input></p>
+			<!--<p><input type="number"></input></p>!-->
+		</form>
+{% endblock%}

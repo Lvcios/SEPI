@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% load adminmedia %} 
+{% block years%}
+<div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+	{% for year, months in years %}
+				<ul class="nav nav-list">
+				<li class="nav-header">{{year}}</li>
+				{% for month in months %}
+					<li class={% if month.evento %} "active" {% endif %} {% if not month.current %}" {% endif %}">
+					<a href="{% url congreso.views.vista_mes year month.n %}">{{ month.name }}</a></li>
+				{% endfor %}
+				</ul>
+			{% endfor %}
+</div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+ {% endblock %}

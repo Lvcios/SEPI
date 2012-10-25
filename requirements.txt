@@ -1,0 +1,4 @@
+Django==1.4.2
+distribute==0.6.28
+django-countries==1.4
+wsgiref==0.1.2

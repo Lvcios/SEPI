@@ -1,0 +1,28 @@
+{% load adminmedia %} 
+<html>
+	<head>
+		<title>Departamento de Investigaci&oacute;n</title>
+		<script type="text/javascript" src="{{STATIC_UR}}js/core.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.min.css"/>
+	</head>
+	<body>
+	<form action="{% url cal.views.day year month day %}" method="POST"> {% csrf_token %}
+
+{{ entries.management_form }}
+
+{% for entry in entries.forms %}
+    {{ entry.id }}
+    <div class="entry">
+        <div class="del">Delete {{ entry.DELETE }}</div>
+        <div id="inp1">
+            <p>Title: {{ entry.title }}</p>
+            <p>Snippet: {{ entry.snippet }}</p>
+        </div>
+        <p>Remind: {{ entry.remind }}</p>
+        {{ entry.body }}
+    </div>
+{% endfor %}
+
+<input type="submit" value="Save" /> </form>
+	</body>
+</html>
