@@ -117,11 +117,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-	#'docgenerator',
 	'congreso',
-	#'cal',
 	'django.contrib.formtools',
-	#'django.contrib.flatpages',
 )
 
 # A sample logging configuration. The only tangible logging
