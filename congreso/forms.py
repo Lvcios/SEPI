@@ -6,6 +6,8 @@ from django.forms.widgets import *
 from congreso.models import *
 from congreso.timeselectwidget import SelectTimeWidget
 from congreso.paises import PAISES
+from congreso.tipos import TIPOS
+from django.contrib.formtools.wizard.views import SessionWizardView
 
 
 class EventoForm(ModelForm):
@@ -15,6 +17,7 @@ class EventoForm(ModelForm):
 		widgets = {
 		'Nombre':TextInput(attrs={'maxlength': 250, 'size':75}),
 		'Pagina':TextInput(attrs={'maxlength': 250, 'size':75}),
+		'Tipo':Select(choices = TIPOS),
 		'Costo':TextInput(attrs={'maxlength': 250, 'size':10}),
 		'Descripcion': Textarea(attrs={'cols': 54, 'rows': 5}),
 		'Pais':Select(choices=PAISES),
@@ -34,3 +37,11 @@ class EventoForm(ModelForm):
 		}
 		
 		
+class FechasClaveForm(ModelForm):
+	class Meta:
+		model = FechasClave
+		fields = ('Fecha','Descripcion')
+		widgets = {
+			'Fecha':SelectDateWidget(),
+			'Descripcion': Textarea(attrs={'cols': 54, 'rows': 5}),
+		}

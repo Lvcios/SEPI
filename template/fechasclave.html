@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% load adminmedia %} 
+{% block registro%}
+		<form id="formulario" method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+			<table>
+				<tr>
+					<td>{{formulario.Evento.errors}}</td>
+					<td><label>Nombre del evento:</label></td>
+					<td>{{formulario.Evento}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Fecha.errors}}</td>
+					<td><label>Nombre del evento:</label></td>
+					<td>{{formulario.Fecha}}</td>
+				</tr>
+				<tr>
+					<td>{{formulario.Descripcion.errors}}</td>
+					<td><label>Nombre del evento:</label></td>
+					<td>{{formulario.Descripcion}}</td>
+				</tr>
+			</table>
+			<p><input type="submit" value="Confirmar"></input></p>
+			<!--<p><input type="number"></input></p>!-->
+		</form>
+{% endblock%}

@@ -9,6 +9,69 @@ import calendar
 from django.template import RequestContext #necesaria para jalar los estilos css
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
+from django_countries import CountryField
+
+
+
+class ContactWizard(SessionWizardView):
+	template_name = "form.html"
+	def done(self, form_list, **kwargs):
+		return render_to_response('done.html', {'form_data': [form.cleaned_data for form in form_list],
+												'Referencias' : form_list[0].cleaned_data.values()[0],
+												'Correo':form_list[0].cleaned_data.values()[1],
+												'Tipo' : unicode(form_list[0].cleaned_data.values()[2]),
+												'Costo' : form_list[0].cleaned_data.values()[3],
+												'Director' : form_list[0].cleaned_data.values()[4],
+												'Fecha_I' :form_list[0].cleaned_data.values()[5],
+												'Pagina' : form_list[0].cleaned_data.values()[6],
+												'Hora_I' : form_list[0].cleaned_data.values()[7],
+												'Fecha_F' :form_list[0].cleaned_data.values()[8],
+												'Descripcion' : form_list[0].cleaned_data.values()[9],
+												'Nombre' : form_list[0].cleaned_data.values()[10],
+												'Hora_F' : form_list[0].cleaned_data.values()[11],
+												'Direccion' : form_list[0].cleaned_data.values()[12],
+												'Estado' : form_list[0].cleaned_data.values()[13],
+												'Pais' : CountryField(name = str(form_list[0].cleaned_data.values()[14])),
+												'Municipio' : form_list[0].cleaned_data.values()[15],
+												})
+
+
+class EventoWizard(SessionWizardView):
+	template_name = "form.html"
+	def done(self, form_list, **kwargs):
+		if form_list[0].is_valid():
+			evento = Evento( Referencias = form_list[0].cleaned_data.values()[0],
+							Correo = form_list[0].cleaned_data.values()[1],
+							Tipo = form_list[0].cleaned_data.values()[2],
+							Costo = form_list[0].cleaned_data.values()[3],
+							Director = form_list[0].cleaned_data.values()[4],
+							Fecha_I = form_list[0].cleaned_data.values()[5],
+							Pagina = form_list[0].cleaned_data.values()[6],
+							Hora_I = form_list[0].cleaned_data.values()[7],
+							Fecha_F =form_list[0].cleaned_data.values()[8],
+							Descripcion = form_list[0].cleaned_data.values()[9],
+							Nombre = form_list[0].cleaned_data.values()[10],
+							Hora_F = form_list[0].cleaned_data.values()[11],
+							Direccion = form_list[0].cleaned_data.values()[12],
+							Estado = form_list[0].cleaned_data.values()[13],
+							Pais = CountryField(name = str(form_list[0].cleaned_data.values()[14])),
+							Municipio = form_list[0].cleaned_data.values()[15],
+			)
+			evento.save()
+			
+		if form_list[1].is_valid():
+			fechas = FechasClave(Descripcion = form_list[1].cleaned_data.values()[0],
+								#Evento = form_list[0].values()[1],
+								Evento = evento,
+								Fecha = form_list[1].cleaned_data.values()[1]
+			)
+			fechas.save()
+		
+		return HttpResponseRedirect('/')
+
+
+
+
 
 def nuevo_evento(request):
 	if request.method == 'POST':
@@ -22,6 +85,16 @@ def nuevo_evento(request):
 	return render_to_response('evento.html',{'formulario':formulario},context_instance = RequestContext(request))# Create your views here.
 
 
+def nuevas_fecha(request):
+	if request.method == 'POST':
+		formulario = FechasClaveForm(request.POST,request.FILES)
+		if formulario.is_valid():
+			formulario.save(commit = True)
+			return HttpResponseRedirect('/')
+			#return render_to_response('destino.html',{'formulario':formulario},context_instance = RequestContext(request))
+	else:
+		formulario = FechasClaveForm()
+	return render_to_response('fechasclave.html',{'formulario':formulario},context_instance = RequestContext(request))# Create your views here.
 
 #LISTA DE MESES
 mnames = "Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre"

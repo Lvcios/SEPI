@@ -1,18 +1,25 @@
-{% load i18n %}
-{% csrf_token %}
-{{ wizard.form.media }}
-{{ wizard.management_form }}
-{% if wizard.form.forms %}
-    {{ wizard.form.management_form }}
-    {% for form in wizard.form.forms %}
-        {{ form.as_p }}
-    {% endfor %}
-{% else %}
-    {{ wizard.form.as_p }}
-{% endif %}
-
-{% if wizard.steps.prev %}
-<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
-<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
-{% endif %}
-<input type="submit" name="submit" value="{% trans "submit" %}" />
+<html>
+    <head>
+        <title>Feedback Done</title>
+    </head>
+    <body>
+        <h1>We got your feedback!</h1>
+        <pre>{{ form_data|pprint }}</pre>
+        <p> correo:{{Correo}}</p>
+        <p> costo:{{Costo}}</p>
+        <p> direccion: {{Direccion}}</p>
+        <p> director:{{Director}}</p>
+        <p> descripcion:{{Descripcion}}</p>
+        <p> estado:{{Estado}}</p>
+        <p> fecha f:{{Fecha_F}}</p>
+        <p> fecha i:{{Fecha_I}}</p>
+        <p> hora f:{{Hora_F}}</p>
+        <p> hora i:{{Hora_I}}</p>
+        <p> municipio:{{Municipio}}</p>
+        <p> noombre:{{Nombre}}</p>
+        <p> pagina:{{Pagina}}</p>
+        <p> pais:{{Pais}}</p>
+        <p> referencias:{{Referencias}}</p>
+        <p> tipo:{{Tipo}}</p>
+    </body>
+</html>

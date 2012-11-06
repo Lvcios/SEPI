@@ -1,5 +1,5 @@
-from congreso.models import Evento,Tipo
+from congreso.models import *
 from django.contrib import admin
 
 admin.site.register(Evento)
-admin.site.register(Tipo)
+admin.site.register(FechasClave)
