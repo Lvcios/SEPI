@@ -13,33 +13,6 @@ from django.core.context_processors import csrf
 from django_countries import CountryField
 
 
-
-class ContactWizard(SessionWizardView):
-	template_name = "form.html"
-	def done(self, form_list, **kwargs):
-		return render_to_response('done.html', {'form_data': [form.cleaned_data for form in form_list],
-												'Fecha_J' : form_list[1].cleaned_data.values()[0],
-												'Descripcion_I' :form_list[1].cleaned_data.values()[1],
-												'Descripcion_H' : form_list[1].cleaned_data.values()[2],
-												'Fecha_H' : form_list[1].cleaned_data.values()[3],
-												'Fecha_A' : form_list[1].cleaned_data.values()[4],
-												'Fecha_I' : form_list[1].cleaned_data.values()[5],
-												'Fecha_C' : form_list[1].cleaned_data.values()[6],
-												'Fecha_B' : form_list[1].cleaned_data.values()[7],
-												'Fecha_E' : form_list[1].cleaned_data.values()[8],
-												'Fecha_D' : form_list[1].cleaned_data.values()[9],
-												'Fecha_G' : form_list[1].cleaned_data.values()[10],
-												'Fecha_F' : form_list[1].cleaned_data.values()[11],
-												'Descripcion_G' : form_list[1].cleaned_data.values()[12],
-												'Descripcion_F' :form_list[1].cleaned_data.values()[13],
-												'Descripcion_E' : form_list[1].cleaned_data.values()[14],
-												'Descripcion_D' : form_list[1].cleaned_data.values()[15],
-												'Descripcion_C' :form_list[1].cleaned_data.values()[16],
-												'Descripcion_B':form_list[1].cleaned_data.values()[17],
-												'Descripcion_A' : form_list[1].cleaned_data.values()[18],
-												'Descripcion_J' : form_list[1].cleaned_data.values()[19],
-												})
-
 #FORMS = [("evento",EventoForm),("fechas",FechasClaveForm)]
 #TEMPLATES = {"evento":"evento.html","fechas":"fechasclave.html"}
 
@@ -101,29 +74,6 @@ class EventoWizard(SessionWizardView):
 
 
 
-
-def nuevo_evento(request):
-	if request.method == 'POST':
-		formulario = EventoForm(request.POST,request.FILES)
-		if formulario.is_valid():
-			formulario.save(commit = True)
-			return HttpResponseRedirect('/')
-			#return render_to_response('destino.html',{'formulario':formulario},context_instance = RequestContext(request))
-	else:
-		formulario = EventoForm()
-	return render_to_response('evento.html',{'formulario':formulario},context_instance = RequestContext(request))# Create your views here.
-
-
-def nuevas_fecha(request):
-	if request.method == 'POST':
-		formulario = FechasClaveForm(request.POST,request.FILES)
-		if formulario.is_valid():
-			formulario.save(commit = True)
-			return HttpResponseRedirect('/')
-			#return render_to_response('destino.html',{'formulario':formulario},context_instance = RequestContext(request))
-	else:
-		formulario = FechasClaveForm()
-	return render_to_response('fechasclave.html',{'formulario':formulario},context_instance = RequestContext(request))# Create your views here.
 
 #LISTA DE MESES
 mnames = "Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre"

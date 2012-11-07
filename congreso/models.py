@@ -1,7 +1,6 @@
 #endcoding:utf-8
 from django.db import models
 from django_countries import CountryField
-# Create your models here.
 
 
 class TipoEvento(models.Model):
@@ -13,7 +12,6 @@ class TipoEvento(models.Model):
 class Evento(models.Model):
 	Nombre = models.CharField(max_length = 250, verbose_name="Nombre Completo",)
 	Pagina = models.URLField(max_length = 500, verbose_name="Web")
-	#Tipo= models.CharField(max_length = 50, verbose_name="Tipo")
 	Tipo = models.ForeignKey(TipoEvento)
 	Costo= models.CharField(max_length = 100, verbose_name="Costo")
 	Descripcion = models.TextField(max_length = 100, verbose_name="De que trata")
@@ -56,6 +54,4 @@ class FechasClave(models.Model):
 	Fecha_J = models.DateField(auto_now = False,verbose_name="Fecha",null = "True",blank = "True")
 	Descripcion_J = models.TextField(max_length = 100, verbose_name="Descripcion",blank = "True")
 	def __unicode__(self):
-		#return self.Evento.Nombre + ' ' + str(self.Fecha) + ', Para:' + str(self.Descripcion)
-		#return str(self.Fecha) + ', Para:' + str(self.Descripcion)
 		return self.Evento.Nombre + ', Listado de Fechas Importantes'
