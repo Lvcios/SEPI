@@ -1,6 +1,6 @@
 # Django settings for SEPI project.
 #endcoding:utf-8
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 import dj_database_url
 import os
