@@ -16,6 +16,7 @@
     <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
 	<link href="http://raw.github.com/Lvcios/SEPI/master/SEPI/static/css/forms.css" rel="stylesheet">
 	<link href="http://raw.github.com/Lvcios/SEPI/master/SEPI/static/css/base.css" rel="stylesheet">-->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -30,10 +31,18 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    
+    
   </head>
-
   <body>
-
+	<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -45,7 +54,11 @@
           <a class="brand" href="{% url congreso.views.vista_mes %}">Agenda de Congresos</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              <a href="#" class="navbar-link">{{year}}</a>
+				<g:plusone></g:plusone>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="&lt;div class=&quot;fb-like&quot; data-href=&quot;http://sepi-upiicsa-calendario.herokuapp.com/&quot; data-send=&quot;true&quot; data-width=&quot;450&quot; data-show-faces=&quot;true&quot;&gt;&lt;/div&gt;" data-lang="es">Twittear</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				<div class="fb-like" data-href="http://sepi-upiicsa-calendario.herokuapp.com/" data-send="true" data-width="450" data-show-faces="true"></div>
+				<a href="#" class="navbar-link">{{year}}</a>
             </p>
             <ul class="nav">
               
