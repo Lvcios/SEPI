@@ -11,6 +11,8 @@
 
     <!-- Le styles -->
     <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+	<link href="{{STATIC_URL}}css/forms.css" rel="stylesheet">
+	<link href="{{STATIC_URL}}css/base.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -43,7 +45,8 @@
               <a href="#" class="navbar-link">{{year}}</a>
             </p>
             <ul class="nav">
-              <li class="active"><a href= "{% url congreso.views.nuevo_evento %}">Registrar Evento</a></li>
+              
+			  <li class="active"><a href= "/registro/">Registrar Evento</a></li>
               <!--<li><a href="#about">Consultar fecha especifica</a></li>
               <li><a href="#contact">Contact</a></li>-->
             </ul>

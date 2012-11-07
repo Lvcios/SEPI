@@ -1,11 +1,7 @@
-<html>
-    <head>
-        <title>ExampleFormWizard</title>
-    </head>
-    <body>
-        <h1>We want your feedback!</h1>
+{% extends 'index.html' %}
+{% load adminmedia %} 
+{% block registro%}
         <form action="." method="post">
             {% include "wizard_form.html" %}
         </form>
-    </body>
-</html>
+{% endblock%}

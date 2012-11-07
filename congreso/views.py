@@ -1,3 +1,4 @@
+#endcoding:utf-8
 from congreso.models import *
 from congreso.forms import *
 from django.contrib.auth.models import User
@@ -17,27 +18,37 @@ class ContactWizard(SessionWizardView):
 	template_name = "form.html"
 	def done(self, form_list, **kwargs):
 		return render_to_response('done.html', {'form_data': [form.cleaned_data for form in form_list],
-												'Referencias' : form_list[0].cleaned_data.values()[0],
-												'Correo':form_list[0].cleaned_data.values()[1],
-												'Tipo' : unicode(form_list[0].cleaned_data.values()[2]),
-												'Costo' : form_list[0].cleaned_data.values()[3],
-												'Director' : form_list[0].cleaned_data.values()[4],
-												'Fecha_I' :form_list[0].cleaned_data.values()[5],
-												'Pagina' : form_list[0].cleaned_data.values()[6],
-												'Hora_I' : form_list[0].cleaned_data.values()[7],
-												'Fecha_F' :form_list[0].cleaned_data.values()[8],
-												'Descripcion' : form_list[0].cleaned_data.values()[9],
-												'Nombre' : form_list[0].cleaned_data.values()[10],
-												'Hora_F' : form_list[0].cleaned_data.values()[11],
-												'Direccion' : form_list[0].cleaned_data.values()[12],
-												'Estado' : form_list[0].cleaned_data.values()[13],
-												'Pais' : CountryField(name = str(form_list[0].cleaned_data.values()[14])),
-												'Municipio' : form_list[0].cleaned_data.values()[15],
+												'Fecha_J' : form_list[1].cleaned_data.values()[0],
+												'Descripcion_I' :form_list[1].cleaned_data.values()[1],
+												'Descripcion_H' : form_list[1].cleaned_data.values()[2],
+												'Fecha_H' : form_list[1].cleaned_data.values()[3],
+												'Fecha_A' : form_list[1].cleaned_data.values()[4],
+												'Fecha_I' : form_list[1].cleaned_data.values()[5],
+												'Fecha_C' : form_list[1].cleaned_data.values()[6],
+												'Fecha_B' : form_list[1].cleaned_data.values()[7],
+												'Fecha_E' : form_list[1].cleaned_data.values()[8],
+												'Fecha_D' : form_list[1].cleaned_data.values()[9],
+												'Fecha_G' : form_list[1].cleaned_data.values()[10],
+												'Fecha_F' : form_list[1].cleaned_data.values()[11],
+												'Descripcion_G' : form_list[1].cleaned_data.values()[12],
+												'Descripcion_F' :form_list[1].cleaned_data.values()[13],
+												'Descripcion_E' : form_list[1].cleaned_data.values()[14],
+												'Descripcion_D' : form_list[1].cleaned_data.values()[15],
+												'Descripcion_C' :form_list[1].cleaned_data.values()[16],
+												'Descripcion_B':form_list[1].cleaned_data.values()[17],
+												'Descripcion_A' : form_list[1].cleaned_data.values()[18],
+												'Descripcion_J' : form_list[1].cleaned_data.values()[19],
 												})
+
+#FORMS = [("evento",EventoForm),("fechas",FechasClaveForm)]
+#TEMPLATES = {"evento":"evento.html","fechas":"fechasclave.html"}
 
 
 class EventoWizard(SessionWizardView):
 	template_name = "form.html"
+	#def get_template_names(self):
+	#	return [TEMPLATES[self.steps.current]]
+		
 	def done(self, form_list, **kwargs):
 		if form_list[0].is_valid():
 			evento = Evento( Referencias = form_list[0].cleaned_data.values()[0],
@@ -54,16 +65,34 @@ class EventoWizard(SessionWizardView):
 							Hora_F = form_list[0].cleaned_data.values()[11],
 							Direccion = form_list[0].cleaned_data.values()[12],
 							Estado = form_list[0].cleaned_data.values()[13],
-							Pais = CountryField(name = str(form_list[0].cleaned_data.values()[14])),
+							#Pais = CountryField(name = str(form_list[0].cleaned_data.values()[14])),
+							Pais = form_list[0].cleaned_data.values()[14],
 							Municipio = form_list[0].cleaned_data.values()[15],
 			)
 			evento.save()
 			
 		if form_list[1].is_valid():
-			fechas = FechasClave(Descripcion = form_list[1].cleaned_data.values()[0],
-								#Evento = form_list[0].values()[1],
-								Evento = evento,
-								Fecha = form_list[1].cleaned_data.values()[1]
+			fechas = FechasClave(Evento = evento,
+								Fecha_J = form_list[1].cleaned_data.values()[0],
+								Descripcion_I = form_list[1].cleaned_data.values()[1],
+								Descripcion_H = form_list[1].cleaned_data.values()[2],
+								Fecha_H = form_list[1].cleaned_data.values()[3],
+								Fecha_A = form_list[1].cleaned_data.values()[4],
+								Fecha_I = form_list[1].cleaned_data.values()[5],
+								Fecha_C = form_list[1].cleaned_data.values()[6],
+								Fecha_B = form_list[1].cleaned_data.values()[7],
+								Fecha_E = form_list[1].cleaned_data.values()[8],
+								Fecha_D = form_list[1].cleaned_data.values()[9],
+								Fecha_G = form_list[1].cleaned_data.values()[10],
+								Fecha_F = form_list[1].cleaned_data.values()[11],
+								Descripcion_G = form_list[1].cleaned_data.values()[12],
+								Descripcion_F = form_list[1].cleaned_data.values()[13],
+								Descripcion_E = form_list[1].cleaned_data.values()[14],
+								Descripcion_D = form_list[1].cleaned_data.values()[15],
+								Descripcion_C = form_list[1].cleaned_data.values()[16],
+								Descripcion_B = form_list[1].cleaned_data.values()[17],
+								Descripcion_A = form_list[1].cleaned_data.values()[18],
+								Descripcion_J = form_list[1].cleaned_data.values()[19],
 			)
 			fechas.save()
 		
@@ -144,8 +173,9 @@ def vista_mes(request, year = None , month = None):
 
 def vista_dia(request, year, month, day):
 	month = int(month)
-	eventos = Evento.objects.filter(Fecha_I__year=year, Fecha_I__month=month, Fecha_I__day=day, Validado = True)
-	return render_to_response("dia.html",{"eventos":eventos,"Fecha_D":day,"Fecha_M":mnames[month-1],"Fecha_A":year},RequestContext(request))
+	evento = Evento.objects.get(Fecha_I__year=year, Fecha_I__month=month, Fecha_I__day=day, Validado = True)
+	fechas = FechasClave.objects.filter(Evento = evento)
+	return render_to_response("dia.html",{"evento":evento,"Fecha_D":day,"Fecha_M":mnames[month-1],"Fecha_A":year,"fechas":fechas},RequestContext(request))
 	
 	
 

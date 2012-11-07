@@ -5,7 +5,7 @@
 {% if wizard.form.forms %}
     {{ wizard.form.management_form }}
     {% for form in wizard.form.forms %}
-        {{ form.as_p }}
+        {{ form.as_ul }}
     {% endfor %}
 {% else %}
     {{ wizard.form.as_p }}

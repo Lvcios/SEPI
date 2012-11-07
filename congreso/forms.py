@@ -17,7 +17,7 @@ class EventoForm(ModelForm):
 		widgets = {
 		'Nombre':TextInput(attrs={'maxlength': 250, 'size':75}),
 		'Pagina':TextInput(attrs={'maxlength': 250, 'size':75}),
-		'Tipo':Select(choices = TIPOS),
+		#'Tipo':Select(choices = TIPOS),
 		'Costo':TextInput(attrs={'maxlength': 250, 'size':10}),
 		'Descripcion': Textarea(attrs={'cols': 54, 'rows': 5}),
 		'Pais':Select(choices=PAISES),
@@ -40,8 +40,35 @@ class EventoForm(ModelForm):
 class FechasClaveForm(ModelForm):
 	class Meta:
 		model = FechasClave
-		fields = ('Fecha','Descripcion')
+		fields = ('Fecha_A','Descripcion_A',
+				  'Fecha_B','Descripcion_B',
+				  'Fecha_C','Descripcion_C',
+				  'Fecha_D','Descripcion_D',
+				  'Fecha_E','Descripcion_E',
+				  'Fecha_F','Descripcion_F',
+				  'Fecha_G','Descripcion_G',
+				  'Fecha_H','Descripcion_H',
+				  'Fecha_I','Descripcion_I',
+				  'Fecha_J','Descripcion_J',)
 		widgets = {
-			'Fecha':SelectDateWidget(),
-			'Descripcion': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_A':SelectDateWidget(),
+			'Descripcion_A': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_B':SelectDateWidget(),
+			'Descripcion_B': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_C':SelectDateWidget(),
+			'Descripcion_C': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_D':SelectDateWidget(),
+			'Descripcion_D': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_E':SelectDateWidget(),
+			'Descripcion_E': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_F':SelectDateWidget(),
+			'Descripcion_F': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_G':SelectDateWidget(),
+			'Descripcion_G': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_H':SelectDateWidget(),
+			'Descripcion_H': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_I':SelectDateWidget(),
+			'Descripcion_I': Textarea(attrs={'cols': 54, 'rows': 5}),
+			'Fecha_J':SelectDateWidget(),
+			'Descripcion_J': Textarea(attrs={'cols': 54, 'rows': 5}),
 		}

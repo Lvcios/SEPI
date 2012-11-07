@@ -2,7 +2,7 @@
 {% load adminmedia %} 
 {%block dia%}
 	<h1>{{Fecha_D}} de {{Fecha_M}} de {{Fecha_A}}</h1>
-	{% for evento in eventos %}
+	
     <div class="hero-unit">
         <div class="container-fluid">
             <p><h3>{{ evento.Nombre }}</h3></p>
@@ -18,7 +18,26 @@
 			Direccion <p>{{ evento.Direccion}}</p>
 			Referencias {% if evento.Referencias%} <p>{{ evento.Referencias}}</p> {%endif%}
 						{% if not evento.Referencias%} <p>No se especificaron referencias</p>{%endif%}
+			<div>
+				<p><h3>Fechas Importantes del evento</h3></p>
+				{% if fechas %}
+					{% for fecha in fechas%}
+						<p>{%if fecha.Fecha_A%}{{fecha.Fecha_A}} , {{fecha.Descripcion_A}}{%endif%}</p>
+						<p>{%if fecha.Fecha_B%}{{fecha.Fecha_B}} , {{fecha.Descripcion_B}}{%endif%}</p>
+						<p>{%if fecha.Fecha_C%}{{fecha.Fecha_C}} , {{fecha.Descripcion_C}}{%endif%}</p>
+						<p>{%if fecha.Fecha_D%}{{fecha.Fecha_D}} , {{fecha.Descripcion_D}}{%endif%}</p>
+						<p>{%if fecha.Fecha_E%}{{fecha.Fecha_E}} , {{fecha.Descripcion_E}}{%endif%}</p>
+						<p>{%if fecha.Fecha_F%}{{fecha.Fecha_F}} , {{fecha.Descripcion_F}}{%endif%}</p>
+						<p>{%if fecha.Fecha_G%}{{fecha.Fecha_G}} , {{fecha.Descripcion_G}}{%endif%}</p>
+						<p>{%if fecha.Fecha_H%}{{fecha.Fecha_H}} , {{fecha.Descripcion_H}}{%endif%}</p>
+						<p>{%if fecha.Fecha_I%}{{fecha.Fecha_I}} , {{fecha.Descripcion_I}}{%endif%}</p>
+						<p>{%if fecha.Fecha_J%}{{fecha.Fecha_J}} , {{fecha.Descripcion_J}}{%endif%}</p>
+					{% endfor %}
+				{% endif %}
+				{% if not fechas %}
+				<p>El evento no cuenta con fechas importates o en su defecto no fuero registradas</p>
+				{% endif %}
+			</div>
         </div>
     </div>
-	{% endfor %}
-{%endblock%}
+{% endblock %}

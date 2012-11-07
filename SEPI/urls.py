@@ -9,12 +9,14 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	#project's urls
-	url(r'^registro/$','congreso.views.nuevo_evento'),
-	url(r'^fechas/$','congreso.views.nuevas_fecha'),
+	#url(r'^registro/$','congreso.views.nuevo_evento'),
+	#url(r'^fechas/$','congreso.views.nuevas_fecha'),
 	url(r"^$", "congreso.views.vista_mes"),
 	url(r"^(\d+)/(\d+)/$", "congreso.views.vista_mes"),
 	url(r"^(\d+)/(\d+)/(\d+)/$", "congreso.views.vista_dia"),
-	url(r'^formwizard/$', EventoWizard.as_view([EventoForm, FechasClaveForm])),
+	#url(r'^registro/$', EventoWizard.as_view([EventoForm, FechasClaveForm, FechasClaveForm, FechasClaveForm, FechasClaveForm, FechasClaveForm, FechasClaveForm, FechasClaveForm,])),
+	url(r'^registro/$', EventoWizard.as_view([EventoForm, FechasClaveForm])),
+	#url(r'^registro/$', EventoWizard.as_view(FORMS)),
 	url(r'^contact/$', ContactWizard.as_view([EventoForm, FechasClaveForm])),
 	#admin's urls
 	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
