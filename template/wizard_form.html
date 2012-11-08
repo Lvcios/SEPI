@@ -4,15 +4,19 @@
 {{ wizard.management_form }}
 {% if wizard.form.forms %}
     {{ wizard.form.management_form }}
+    <table>
     {% for form in wizard.form.forms %}
-        {{ form.as_ul }}
+        {{ form.as_table }}
     {% endfor %}
+    </table>
 {% else %}
-    {{ wizard.form.as_p }}
+	<table>
+    {{ wizard.form.as_table }}
+    </table>
 {% endif %}
 
 {% if wizard.steps.prev %}
 <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
 <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
 {% endif %}
-<input type="submit" name="submit" value="{% trans "submit" %}" />
+<input type="submit" name="submit" value="{% trans "Enviar Datos" %}" />

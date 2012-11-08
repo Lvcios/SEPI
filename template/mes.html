@@ -5,7 +5,7 @@
 		<div align="center">
 			<h1>{{ mname }} {{ year }}</h1>
         </div>
-		<div class="hero-unit">
+		<div class="navbar-inner">
 		<a href= "{% url congreso.views.vista_mes year_prev month_prev  %}">{{mname_prev}} {{year_prev}} </a><br />
 		<a href= "{% url congreso.views.vista_mes year_next month_next   %}">{{mname_next}} {{year_next}}</a>
 			<table class="table table-striped">
@@ -25,7 +25,7 @@
 				{% if day != 0 %}
 						{{ day }}
 						{% for evento in eventos %}
-						<p></p><a href= "{% url congreso.views.vista_dia year month day %}">{{ evento.Nombre }}</a>
+						<p></p><a href= "{% url congreso.views.vista_dia evento.id year month day%}">{{ evento.Nombre }}</a>
 					{% endfor %}
 				{% endif %}
 				</td>
@@ -33,4 +33,33 @@
 				</tr>
 				{% endfor %}
     </table>
+    <div class="navbar-inner">
+		<table class="table table-striped">
+			<tr>
+				<td class="span3"><a href= "{% url congreso.views.vista_lista year_prev_a%}">Eventos realizados en {{ year_prev_a }}</a></td>
+				<td class="span3"><a href= "{% url congreso.views.vista_lista year%}">Eventos realizados y por realizar en {{ year }}</a></td>
+				<td class="span3"><a href= "{% url congreso.views.vista_lista year_next_a%}">Eventos por realizar en {{ year_next_a }}</a></td>
+				<td class="span3"><a href= "{% url congreso.views.vista_lista year_next_b%}">Eventos por realizar en {{ year_next_b }}</a></td>
+			</tr>
+		</table>
+		<table class="table table-striped">
+			<!--Botones para redes sociales-->
+			<tr>
+				<td class="span3">
+					<!--Twitter-->
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sepi-upiicsa-calendario.herokuapp.com/{{year}}/{{month}}" data-text="Calendario de eventos para {{mname}} de {{year}}. Depto de Investigaci&oacute;n - UPIICSA" data-count="none">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</td>
+				<td class="span3">
+					<!--Facebook--->
+					<div class="fb-like" data-href="http://sepi-upiicsa-calendario.herokuapp.com/" data-send="true" data-width="450" data-show-faces="true"></div>
+				</td>
+				<td class="span3">
+					<g:plusone size="tall"></g:plusone>
+				</td>
+			</tr>
+		</table>
+    </div>
+    </div>
+    
 {% endblock%}

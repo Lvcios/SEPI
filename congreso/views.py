@@ -16,12 +16,14 @@ from django_countries import CountryField
 #FORMS = [("evento",EventoForm),("fechas",FechasClaveForm)]
 #TEMPLATES = {"evento":"evento.html","fechas":"fechasclave.html"}
 
+def vista_lista(request, year):
+	year = int(year)
+	lista = Evento.objects.filter(Fecha_I__year=year).order_by('Fecha_I')
+	return render_to_response("lista.html",{"lista":lista,"year":year},RequestContext(request))
+
 
 class EventoWizard(SessionWizardView):
-	template_name = "form.html"
-	#def get_template_names(self):
-	#	return [TEMPLATES[self.steps.current]]
-		
+	template_name = "form.html"		
 	def done(self, form_list, **kwargs):
 		if form_list[0].is_valid():
 			evento = Evento( Referencias = form_list[0].cleaned_data.values()[0],
@@ -100,6 +102,9 @@ def vista_mes(request, year = None , month = None):
 		year_next = year + 1
 		month_next = 1
 		
+	year_prev_a = year - 1
+	year_next_a = year + 1
+	year_next_b = year + 2
 	cal = calendar.Calendar()
 	month_days = cal.itermonthdays(year, month)
 	nyear, nmonth, nday = time.localtime()[:3]
@@ -117,15 +122,17 @@ def vista_mes(request, year = None , month = None):
 			lst.append([])
 			week += 1
 	return render_to_response("mes.html", {"year":year, "month":month,"month_days":lst, "mname":mnames[month-1],"mname_next":mnames[month_next-1],"mname_prev":mnames[month_prev-1],
-	"year_prev":year_prev,"year_next":year_next,"month_prev":month_prev,"month_next":month_next},RequestContext(request))
+	"year_prev":year_prev,"year_next":year_next,"month_prev":month_prev,"month_next":month_next,
+	"year_prev_a":year_prev_a,"year_next_a":year_next_a,"year_next_b":year_next_b}
+	,RequestContext(request))
 	#return render_to_response("index.html", {"year":year, "month":month,"month_days":lst, "mname":mnames[month-1],"year_prev":year_prev,"year_next":year_next,"month_prev":month_prev,"month_next":month_next},RequestContext(request))
 
 
-def vista_dia(request, year, month, day):
+def vista_dia(request, cve, year, month, day):
 	month = int(month)
-	evento = Evento.objects.get(Fecha_I__year=year, Fecha_I__month=month, Fecha_I__day=day, Validado = True)
+	evento = Evento.objects.get(id = cve, Fecha_I__year=year, Fecha_I__month=month, Fecha_I__day=day, Validado = True)
 	fechas = FechasClave.objects.filter(Evento = evento)
-	return render_to_response("dia.html",{"evento":evento,"Fecha_D":day,"Fecha_M":mnames[month-1],"Fecha_A":year,"fechas":fechas},RequestContext(request))
+	return render_to_response("dia.html",{"evento":evento,"day":day,"mname":mnames[month-1],"year":year,"month":month,"fechas":fechas},RequestContext(request))
 	
 	
 

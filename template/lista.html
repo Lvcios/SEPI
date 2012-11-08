@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load adminmedia %} 
+{%block dia%}
+    <div class="navbar-inner">
+		{%if not lista%}
+		<h3>Aun no hay eventos registrados para el {{year}}</h3>
+		{%endif%}
+		{%if lista%}
+		<h3>Eventos Realizados en {{year}}</h3>
+			{%for evento in lista%}
+            {{ evento.Nombre }},{{ evento.Fecha_I }}, <a href= "{% url congreso.views.vista_dia evento.id year evento.Fecha_I.month evento.Fecha_I.day%}">Ver Detalles</a><br>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <div class="navbar-inner">
+		<table class="table table-striped">
+			<!--Botones para redes sociales-->
+			<tr>
+				<td class="span3">
+					<!--Twitter-->
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sepi-upiicsa-calendario.herokuapp.com/lista/{{year}}" data-text="Lista de eventos realizados y/o por realizar en {{year}}. Depto de Investigaci&oacute;n - UPIICSA" data-count="none">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</td>
+				<td class="span3">
+					<!--Facebook--->
+					<div class="fb-like" data-href="http://sepi-upiicsa-calendario.herokuapp.com/lista/{{year}}" data-send="true" data-width="450" data-show-faces="true"></div>
+				</td>
+				<td class="span3">
+					<g:plusone size="tall"></g:plusone>
+				</td>
+			</tr>
+		</table>
+    </div>
+{% endblock %}

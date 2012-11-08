@@ -16,16 +16,6 @@
     <!--<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
 	<link href="http://raw.github.com/Lvcios/SEPI/master/SEPI/static/css/forms.css" rel="stylesheet">
 	<link href="http://raw.github.com/Lvcios/SEPI/master/SEPI/static/css/base.css" rel="stylesheet">-->
-	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-    </style>
     <link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -35,14 +25,20 @@
     
   </head>
   <body>
-	<div id="fb-root"></div>
+	  <!-- facebook script button-->
+	  <div id="fb-root"></div>
 		<script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-			fjs.parentNode.insertBefore(js, fjs);
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
+	  <!-- final facebook script button-->
+	  <!--google plus +1 button-->
+	  <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+	  <!--final google plus +1 button-->
+	  <br><br><br>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -78,10 +74,6 @@
       <footer align="center">
         <p>&copy; Secci&oacute;n de Estudios de Posgrado e Investigaci&oacute;n. Departamento de Investigaci&oacute;n</p>
 		<p>UPIICSA -IPN</p>
-		<p><g:plusone></g:plusone></p>
-		<a href="https://twitter.com/share" class="twitter-share-button" data-url="&lt;div class=&quot;fb-like&quot; data-href=&quot;http://sepi-upiicsa-calendario.herokuapp.com/&quot; data-send=&quot;true&quot; data-width=&quot;450&quot; data-show-faces=&quot;true&quot;&gt;&lt;/div&gt;" data-lang="es">Twittear</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
-		<div class="fb-like" data-href="http://sepi-upiicsa-calendario.herokuapp.com/" data-send="true" data-width="450" data-show-faces="true"></div>
       </footer>
 
     </div><!--/.fluid-container-->

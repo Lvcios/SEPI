@@ -11,7 +11,9 @@ urlpatterns = patterns('',
 	#project's urls
 	url(r"^$", "congreso.views.vista_mes"),
 	url(r"^(\d+)/(\d+)/$", "congreso.views.vista_mes"),
-	url(r"^(\d+)/(\d+)/(\d+)/$", "congreso.views.vista_dia"),
+	url(r"^(\d+)/(\d+)/(\d+)/(\d+)/$", "congreso.views.vista_dia"),
+	url(r"^lista/(\d+)/$", "congreso.views.vista_lista"),
+	#url(r"^lista/(\d+)/(\d+)/$", "congreso.views.vista_lista"),
 	url(r'^registro/$', EventoWizard.as_view([EventoForm, FechasClaveForm])),
 	#admin's urls
 	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

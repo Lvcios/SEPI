@@ -23,7 +23,7 @@ class Evento(models.Model):
 	Estado = models.CharField(max_length = 100, verbose_name="Estado")
 	Municipio = models.CharField(max_length = 100, verbose_name="Municipio")
 	Direccion = models.TextField(verbose_name="Domicilio")
-	Referencias = models.TextField(verbose_name="Referencias",blank = "True")
+	Referencias = models.TextField(verbose_name="Referencias y/o Detalles",blank = "True")
 	Director = models.CharField(max_length = 100, verbose_name="Director del evento")
 	Correo = models.EmailField(max_length = 100, verbose_name="E-mail de contacto")
 	Validado = models.BooleanField(blank = "True")
