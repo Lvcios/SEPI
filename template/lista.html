@@ -6,7 +6,7 @@
 		<h3>Aun no hay eventos registrados para el {{year}}</h3>
 		{%endif%}
 		{%if lista%}
-		<h3>Eventos Realizados en {{year}}</h3>
+		<h3>Eventos a realizarse y realizados en {{year}}</h3>
 			{%for evento in lista%}
             {{ evento.Nombre }},{{ evento.Fecha_I }}, <a href= "{% url congreso.views.vista_dia evento.id year evento.Fecha_I.month evento.Fecha_I.day%}">Ver Detalles</a><br>
             {%endfor%}

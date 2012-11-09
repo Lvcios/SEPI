@@ -4,13 +4,14 @@
 	<h1>{{day}} de {{mname}} de {{year}}</h1>
 	
     <div class="navbar-inner">
+		{%for evento in eventos%}
             <h3>{{ evento.Nombre }}</h3>
             Sitio Web: &nbsp;<a href="{{ evento.Pagina }}">{{evento.Pagina}}</a><br>
 			Tipo:&nbsp;{{ evento.Tipo }}<br>
 			Precio:&nbsp;{{ evento.Costo }}<br>
 			Trata acerca de:&nbsp;{{ evento.Descripcion }}<br>
 			Empieza a las:&nbsp;{{ evento.Hora_I }}<br>
-			Termina el &nbsp;{{evento.Fecha_F}} a las {{ evento.Hora_I }}<br>
+			Termina el &nbsp;{{evento.Fecha_F}} a las {{ evento.Hora_F }}<br>
 			Pais:&nbsp;{{ evento.Pais.name }}<br>
 			Estado/Provincia:&nbsp;{{ evento.Estado}}<br>
 			Municipio:&nbsp;{{ evento.Municipio}}<br>
@@ -35,6 +36,7 @@
 				{% if not fechas %}
 				El evento no cuenta con fechas importates o en su defecto no fuero registradas<br>
 				{% endif %}
+		{%endfor%}
     </div>
     <div class="navbar-inner">
 		<table class="table table-striped">
