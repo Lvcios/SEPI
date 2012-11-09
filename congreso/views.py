@@ -161,5 +161,5 @@ def vista_anual(request, year=None):
 	
 	
 def vista_nula(request):
-	return render_to_response("404.html",,RequestContext(request))
+	return render_to_response("404.html",RequestContext(request))
 	
