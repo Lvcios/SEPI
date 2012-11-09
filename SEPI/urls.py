@@ -9,7 +9,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	#project's urls	
-	url(r"^", "congreso.views.vista_nula"),
+	url(r"^(\d+)/(\d+)/", "congreso.views.vista_nula"),
 	url(r"^$", "congreso.views.vista_mes"),
 	url(r"^(\d+)/(\d+)/$", "congreso.views.vista_mes"),
 	url(r"^(\d+)/(\d+)/(\d+)/(\d+)/$", "congreso.views.vista_dia"),
