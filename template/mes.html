@@ -5,9 +5,11 @@
 		<div align="center">
 			<table class="table table-striped">
 				<tr>
-					<td><h1>{{ mname }} {{ year }}</h1></td>
 					<td class="span3">
 						<a href= "{% url congreso.views.vista_mes year_prev month_prev  %}">&laquo;&laquo;{{mname_prev}} {{year_prev}} </a>
+					</td>
+					<td class="span3">
+						<h1>{{ mname }} {{ year }}</h1>
 					</td>
 					<td class="span3" align="right">
 					<a href= "{% url congreso.views.vista_mes year_next month_next   %}">{{mname_next}} {{year_next}} &raquo;&raquo;</a>
