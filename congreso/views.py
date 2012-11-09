@@ -160,6 +160,6 @@ def vista_anual(request, year=None):
 	return render_to_response("anual.html", {"years":lst, "year":year},RequestContext(request))
 	
 	
-def vista_nula(request):
+def vista_nula(request,a=None,b=None,c=None,d=None):
 	return render_to_response("404.html",RequestContext(request))
 	
