@@ -132,7 +132,7 @@ def vista_dia(request, cve, year, month, day):
 	month = int(month)
 	evento = Evento.objects.filter(id = cve, Fecha_I__year=year, Fecha_I__month=month, Fecha_I__day=day, Validado = True)
 	fechas = FechasClave.objects.filter(Evento = evento)
-	return render_to_response("dia.html",{"evento":evento,"day":day,"mname":mnames[month-1],"year":year,"month":month,"fechas":fechas},RequestContext(request))
+	return render_to_response("dia.html",{"eventos":evento,"day":day,"mname":mnames[month-1],"year":year,"month":month,"fechas":fechas},RequestContext(request))
 	
 	
 

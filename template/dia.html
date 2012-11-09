@@ -3,6 +3,7 @@
 {%block dia%}
 	<h1>{{day}} de {{mname}} de {{year}}</h1>
 	
+	{%if eventos%}
     <div class="navbar-inner">
 		{%for evento in eventos%}
             <h3>{{ evento.Nombre }}</h3>
@@ -57,4 +58,10 @@
 			</tr>
 		</table>
     </div>
+    {%endif%}
+    {%if not eventos%}
+    <div class="navbar-inner">
+		<h4>El evento que buscas no existe o no ha sido aprobado por el administrador</h4>
+    </div>
+    {%endif%}
 {% endblock %}
