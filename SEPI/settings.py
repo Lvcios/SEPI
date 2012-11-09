@@ -1,7 +1,7 @@
 # Django settings for SEPI project.
 #endcoding:utf-8
 #sepi-upiicsa-calendario.herokuapp.com
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 import dj_database_url
 import os

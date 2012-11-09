@@ -9,7 +9,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	#project's urls	
-	url(r"^(\d+)/(\d+)/", "congreso.views.vista_nula"),
 	url(r"^$", "congreso.views.vista_mes"),
 	url(r"^(\d+)/(\d+)/$", "congreso.views.vista_mes"),
 	url(r"^(\d+)/(\d+)/(\d+)/(\d+)/$", "congreso.views.vista_dia"),
@@ -19,7 +18,9 @@ urlpatterns = patterns('',
 	#admin's urls
 	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 	url(r'^admin/', include(admin.site.urls)),
-	url(r'^media/(?P<path>.*)$','django.views.static.serve',
-		{'document_root':settings.MEDIA_ROOT,}
 	),
 )
+if not settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,}
+    )
