@@ -1,5 +1,5 @@
-#from django.conf.urls import patterns, include, url
-from django.conf.urls import *
+from django.conf.urls import patterns, include, url
+#from django.conf.urls import *
 from django.contrib import admin
 from django.conf import settings
 from congreso.forms import *
@@ -18,7 +18,10 @@ urlpatterns = patterns('',
 	#admin's urls
 	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 	url(r'^admin/', include(admin.site.urls)),
-	url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,},
-	),
+	#url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,},),
 )
 
+if not settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )

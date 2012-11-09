@@ -6,8 +6,18 @@
 			<h1>{{ mname }} {{ year }}</h1>
         </div>
 		<div class="navbar-inner">
-		<a href= "{% url congreso.views.vista_mes year_prev month_prev  %}">{{mname_prev}} {{year_prev}} </a><br />
-		<a href= "{% url congreso.views.vista_mes year_next month_next   %}">{{mname_next}} {{year_next}}</a>
+			<table class="table table-striped">
+				<tr>
+					<td class="span3">
+						<a href= "{% url congreso.views.vista_mes year_prev month_prev  %}">{{mname_prev}} {{year_prev}} </a>
+					</td>
+					<td class="span3" align="right">
+					<a href= "{% url congreso.views.vista_mes year_next month_next   %}">{{mname_next}} {{year_next}}</a>
+					</td>
+				</tr>
+			</table>
+		
+		
 			<table class="table table-striped">
 				<tr>
 					<td class="span3">Lunes</td>
