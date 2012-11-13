@@ -11,8 +11,8 @@
 			Tipo:&nbsp;{{ evento.Tipo }}<br>
 			Precio:&nbsp;{{ evento.Costo }}<br>
 			Descripci&oacute;n:&nbsp;{{ evento.Descripcion }}<br>
-			Empieza a las:&nbsp;{%if evento.Hora_I%}{{ evento.Hora_I }}{% endif %}
-								{%if not evento.Hora_I%}{%No se especific&oacute;%}<br>
+			Empieza a las:&nbsp;{%if evento.Hora_I %}{{ evento.Hora_I }}{% endif %}
+								{%if not evento.Hora_I%}No se especific&oacute;{%endif%}<br>
 			Termina el &nbsp; {%if evento.Fecha_F%}{{evento.Fecha_F}} a las {{ evento.Hora_F }}{% endif %}
 							  {%if not evento.Fecha_F%} No se especific&oacute;{%endif%}<br>
 			Pais:&nbsp;{{ evento.Pais.name }}<br>
