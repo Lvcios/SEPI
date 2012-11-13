@@ -6,18 +6,21 @@
     <div class="navbar-inner">
 		{%for evento in eventos%}
             <h3>{{ evento.Nombre }}</h3>
-            Sitio Web: &nbsp;<a href="{{ evento.Pagina }}">{{evento.Pagina}}</a><br>
+            Sitio Web: &nbsp;{% if evento.Pagina %}<a href="{{ evento.Pagina }}">{{evento.Pagina}}</a>{% endif %}
+							 {% if not evento.Pagina%} El evento no cuenta con sitio {%endif%}<br> 
 			Tipo:&nbsp;{{ evento.Tipo }}<br>
 			Precio:&nbsp;{{ evento.Costo }}<br>
-			Trata acerca de:&nbsp;{{ evento.Descripcion }}<br>
-			Empieza a las:&nbsp;{{ evento.Hora_I }}<br>
-			Termina el &nbsp;{{evento.Fecha_F}} a las {{ evento.Hora_F }}<br>
+			Descripci&oacute;n:&nbsp;{{ evento.Descripcion }}<br>
+			Empieza a las:&nbsp;{%if evento.Hora_I%}{{ evento.Hora_I }}{% endif %}
+								{%if not evento.Hora_I%}{%No se especific&oacute;%}<br>
+			Termina el &nbsp; {%if evento.Fecha_F%}{{evento.Fecha_F}} a las {{ evento.Hora_F }}{% endif %}
+							  {%if not evento.Fecha_F%} No se especific&oacute;{%endif%}<br>
 			Pais:&nbsp;{{ evento.Pais.name }}<br>
 			Estado/Provincia:&nbsp;{{ evento.Estado}}<br>
 			Municipio:&nbsp;{{ evento.Municipio}}<br>
 			Direccion:&nbsp;{{ evento.Direccion}}<br>
-			Referencias:&nbsp;{% if evento.Referencias%}{{ evento.Referencias}}<br>{%endif%}
-						{% if not evento.Referencias%}No se especificaron referencias<br>{%endif%}
+			Referencias y/o Detalles:&nbsp;{% if evento.Referencias%}{{ evento.Referencias}}<br>{%endif%}
+						{% if not evento.Referencias%}No se especificaron referencias y/o detalles<br>{%endif%}
 			<h4>Fechas Importantes del evento</h4>
 				{% if fechas %}
 					{% for fecha in fechas%}
