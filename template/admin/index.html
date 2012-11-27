@@ -16,7 +16,6 @@
     {% for app in app_list %}
         <div class="module">
         <table summary="{% blocktrans with name=app.name %}Models available in the {{ name }} application.{% endblocktrans %}">
-		<a href="/">Sitio</a>
         <caption><a href="{{ app.app_url }}" class="section">{% blocktrans with name=app.name %}{{ name }}{% endblocktrans %}</a></caption>
         {% for model in app.models %}
             <tr>
