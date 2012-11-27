@@ -39,7 +39,7 @@
 				{% if not fechas %}
 				El evento no cuenta con fechas importates o en su defecto no fuero registradas<br>
 				{% endif %}
-		{%endfor%}
+		
     </div>
     <div class="navbar-inner">
 		<table class="table table-striped">
@@ -60,6 +60,7 @@
 			</tr>
 		</table>
     </div>
+    {%endfor%}
     {%endif%}
     {%if not eventos%}
     <div class="navbar-inner">
