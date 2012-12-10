@@ -18,7 +18,7 @@ from django_countries import CountryField
 
 def vista_lista(request, year):
 	year = int(year)
-	lista = Evento.objects.filter(Fecha_I__year=year).order_by('Fecha_I')
+	lista = Evento.objects.filter(Fecha_I__year=year,Validado = True).order_by('Fecha_I')
 	return render_to_response("lista.html",{"lista":lista,"year":year},RequestContext(request))
 
 
